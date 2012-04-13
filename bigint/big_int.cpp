@@ -359,9 +359,20 @@ big_int operator%(big_int a, const big_int& b)
     return a %= b;
 }
 
-int big_int::to_int() const
+digit_t big_int::to_int() const
 {
     assert (len == 1);
     return a[0];
 }
 
+big_int& big_int::operator%=(const digit_t& b)
+{
+    return (*this) -= (*this) / b * b;
+}
+
+digit_t operator%(big_int a, const digit_t& b)
+{
+    if (abs(b) > big_int::base)
+        return (a % big_int(b)).to_int();
+    return (a %= b).to_int();
+}

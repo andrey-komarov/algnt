@@ -26,7 +26,7 @@ std::string encode(big_int a, size_t base)
     std::string s;
     while (a != 0)
     {
-        s += itoletter((a % base).to_int());
+        s += itoletter(a % base);
         a /= base;
     }
     std::reverse(s.begin(), s.end());

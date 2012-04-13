@@ -21,8 +21,9 @@ struct big_int
     big_int& operator/=(const digit_t&);
     big_int& operator/=(big_int);
     big_int& operator%=(const big_int&);
-
-    int to_int() const;
+    big_int& operator%=(const digit_t&);
+    
+    digit_t to_int() const;
 
 private:
     static const digit_t base = 1000000000;
@@ -40,6 +41,7 @@ private:
     friend std::istream& operator>>(std::istream&, big_int&);
     friend std::ostream& operator<<(std::ostream&, const big_int&);
     friend big_int operator-(big_int);
+    friend digit_t operator%(big_int, const digit_t&);
     friend big_int abs(big_int a);
 };
 
@@ -58,5 +60,6 @@ big_int operator*(big_int, const big_int &);
 big_int operator/(big_int, const digit_t&);
 big_int operator/(big_int, const big_int&);
 big_int operator%(big_int, const big_int&);
+digit_t operator%(big_int, const digit_t&);
 
 #endif /* big_intH */
