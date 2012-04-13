@@ -1,6 +1,10 @@
-#ifndef big_intCPP
-#define big_intCPP
 #include "big_int.h"
+
+#include <cstdlib>
+#include <algorithm>
+#include <stdexcept>
+#include <limits>
+#include <cassert>
 
 big_int::big_int(int b): 
     negative(false), 
@@ -355,4 +359,9 @@ big_int operator%(big_int a, const big_int& b)
     return a %= b;
 }
 
-#endif
+int big_int::to_int() const
+{
+    assert (len == 1);
+    return a[0];
+}
+

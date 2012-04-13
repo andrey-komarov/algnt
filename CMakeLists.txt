@@ -9,9 +9,11 @@ set(CMAKE_BINARY_TREE "${PROJECT_SOURCE_DIR}/bin")
 
 set(bigint_src "${PROJECT_SOURCE_DIR}/bigint/big_int.cpp")
 set(bigint_src ${bigint_src} "${PROJECT_SOURCE_DIR}/bigint/container.cpp")
-
-add_subdirectory(bigint)
 include_directories( ${PROJECT_SOURCE_DIR}/bigint)
+
+set(numsyst_src "${bigint_src}")
+set(numsyst_src ${numsyst_src} "${PROJECT_SOURCE_DIR}/numsyst/numsyst.cpp")
+include_directories( ${PROJECT_SOURCE_DIR}/numsyst)
 
 add_subdirectory(tasks)
 

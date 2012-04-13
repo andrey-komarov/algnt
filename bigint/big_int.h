@@ -1,12 +1,9 @@
 #ifndef big_intH
 #define big_intH
 
-#include <cstdlib>
 #include <string>
-#include <iostream>
-#include <algorithm>
-#include <stdexcept>
-#include <limits>
+#include <istream>
+#include <ostream>
 
 #include "container.h"
 
@@ -24,6 +21,8 @@ struct big_int
     big_int& operator/=(const digit_t&);
     big_int& operator/=(big_int);
     big_int& operator%=(const big_int&);
+
+    int to_int() const;
 
 private:
     static const digit_t base = 1000000000;
