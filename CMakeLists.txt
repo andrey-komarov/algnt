@@ -2,17 +2,12 @@ cmake_minimum_required (VERSION 2.6)
 project (algnt)
 
 add_definitions( -DSTDIO )
-add_definitions( -std=c++0x )
+add_definitions( -std=c++0x -O2 )
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 set(CMAKE_BINARY_TREE "${PROJECT_SOURCE_DIR}/bin")
 
-set(bigint_src "${PROJECT_SOURCE_DIR}/bigint/big_int.cpp")
-set(bigint_src ${bigint_src} "${PROJECT_SOURCE_DIR}/bigint/container.cpp")
-include_directories( ${PROJECT_SOURCE_DIR}/bigint)
-
-set(numsyst_src "${bigint_src}")
-set(numsyst_src ${numsyst_src} "${PROJECT_SOURCE_DIR}/numsyst/numsyst.cpp")
+set(numsyst_src "${PROJECT_SOURCE_DIR}/numsyst/numsyst.cpp")
 include_directories( ${PROJECT_SOURCE_DIR}/numsyst)
 
 add_subdirectory(tasks)

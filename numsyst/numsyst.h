@@ -1,7 +1,7 @@
 #include <string>
 
-#include "big_int.h"
+#include <gmpxx.h>
 
-big_int decode(const std::string& s, size_t base);
-std::string encode(big_int a, size_t base);
+mpz_class decode(const std::string& s, size_t base);
+std::string encode(mpz_class a, size_t base);
 

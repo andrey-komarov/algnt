@@ -12,7 +12,7 @@ char itoletter(int a)
     assert (false);
 }
 
-char lettertoi(char ch)
+int lettertoi(char ch)
 {
     if ('0' <= ch && ch <= '9')
         return ch - '0';
@@ -21,21 +21,22 @@ char lettertoi(char ch)
     assert (false);
 }
 
-std::string encode(big_int a, size_t base)
+std::string encode(mpz_class a, size_t base)
 {
     std::string s;
     while (a != 0)
     {
-        s += itoletter(a % base);
+        mpz_class now = a % base;
+        s += itoletter(now.get_si());
         a /= base;
     }
     std::reverse(s.begin(), s.end());
     return s;
 }
 
-big_int decode(const std::string& s, size_t base)
+mpz_class decode(const std::string& s, size_t base)
 {
-    big_int ans = 0;
+    mpz_class ans = 0;
     for (auto it = s.begin(); it != s.end(); it++)
         ans = ans * base + lettertoi(*it);
     return ans;

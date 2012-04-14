@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <string>
 
-#include "big_int.h"
 #include "numsyst.h"
 
 using namespace std;
@@ -21,7 +20,6 @@ int main()
     in >> s;
     int b1, b2;
     in >> b1 >> b2;
-    big_int a = decode(s, b1);
-    string ans = encode(a, b2);
+    string ans = encode(decode(s, b1), b2);
     out << ans << "\n";
 }
